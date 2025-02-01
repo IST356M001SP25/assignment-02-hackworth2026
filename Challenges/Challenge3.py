@@ -1,13 +1,12 @@
 colors = []
 
 while True:
-    colors = input("Enter a color or enter 'quit' to quit: ")
-    if colors == "quit":
+    color_base = input("Enter a color or enter 'quit' to quit: ")
+    if color_base == 'quit':
         break
-    colors.append(colors)
+    elif color_base in colors:
+        print("You have already entered that color. Removing it.")
+    else:
+        colors.append(color_base)
     print(colors)
-    
-else:
-    print("You have entered the following colors: {colors} ")
-    
-    
+            

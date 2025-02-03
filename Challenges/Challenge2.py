@@ -19,5 +19,5 @@ while True:
         print(f"Negative Number: {raw} ")
 
 print(f"\nYou entered {total} items in total.")
-print(f"Positive numbers: {positive}")
+print(f"Positive Numbers: {positive}")
 print(f"Negative numbers: {negative}")

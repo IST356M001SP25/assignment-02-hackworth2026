@@ -5,7 +5,7 @@ while True:
     if color_base == 'quit':
         break
     elif color_base in colors:
-        print("You have already entered that color. Removing it.")
+        print("You have already Entered that color. Removing it.")
     else:
         colors.append(color_base)
     print(colors)

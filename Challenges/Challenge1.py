@@ -13,6 +13,6 @@ while True:
         print(f"Attempt amounts left {5-attempt}")
 
     if attempt >=5:
-        print("Your account is now locked")
+        print("Your account is now Locked")
 
     

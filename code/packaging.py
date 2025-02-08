@@ -18,7 +18,14 @@ def parse_packaging(packaging_data: str) -> list[dict]:
     input: "20 pieces in 1 pack / 10 packs in 1 carton / 4 cartons in 1 box"
     output: [{ 'pieces' : 20}, {'packs' : 10}, {'carton' : 4}, {'box' : 1}]
     '''
-    pass # TODO: Replace this line and write code
+   
+def parse_packaging(data: str) -> list[dict]:
+    return [{unit: int(qty)} for part in data.split("/") for qty, unit in [part.split()[:2]]]
+
+# Test cases
+print(parse_packaging("12 eggs in 1 carton"))
+print(parse_packaging("6 bars in 1 pack / 12 packs in 1 carton"))
+print(parse_packaging("20 pieces in 1 pack / 10 packs in 1 carton / 4 cartons in 1 box"))
 
 
 def calc_total_units(package: list[dict]) -> int:
@@ -32,8 +39,25 @@ def calc_total_units(package: list[dict]) -> int:
 
     input: [{ 'pieces' : 20}, {'packs' : 10}, {'carton' : 4}, {'box' : 1}]
     output: 800 (e.g. 20*10*4*1)
+
     '''
-    pass # TODO: Replace this line and write code
+def parse_packaging(data: str) -> list[dict]:
+    return [{unit: int(qty)} for part in data.split("/") for qty, unit in [part.split()[:2]]]
+
+def calc_total_units(package: list[dict]) -> int:
+    total = 1
+    for item in package:
+        total *= next(iter(item.values()))
+    return total
+
+# Test cases
+print(parse_packaging("12 eggs in 1 carton"))
+print(parse_packaging("6 bars in 1 pack / 12 packs in 1 carton"))
+print(parse_packaging("20 pieces in 1 pack / 10 packs in 1 carton / 4 cartons in 1 box"))
+
+print(calc_total_units([{ 'bars' : 6}, {'packs' : 12}, {'carton' : 1}]))  # Output: 72
+print(calc_total_units([{ 'pieces' : 20}, {'packs' : 10}, {'carton' : 4}, {'box' : 1}]))  # Output: 800
+
 
 
 def get_unit(package: list[dict]) -> str:
@@ -49,7 +73,29 @@ def get_unit(package: list[dict]) -> str:
     output: pieces
 
     '''
-    pass # TODO: Replace this line and write code
+def parse_packaging(data: str) -> list[dict]:
+    return [{unit: int(qty)} for part in data.split("/") for qty, unit in [part.split()[:2]]]
+
+def calc_total_units(package: list[dict]) -> int:
+    total = 1
+    for item in package:
+        total *= next(iter(item.values()))
+    return total
+
+def get_unit(package: list[dict]) -> str:
+    return next(iter(package[0])) if package else ""
+
+# Test cases
+print(parse_packaging("12 eggs in 1 carton"))
+print(parse_packaging("6 bars in 1 pack / 12 packs in 1 carton"))
+print(parse_packaging("20 pieces in 1 pack / 10 packs in 1 carton / 4 cartons in 1 box"))
+
+print(calc_total_units([{ 'bars' : 6}, {'packs' : 12}, {'carton' : 1}]))  # Output: 72
+print(calc_total_units([{ 'pieces' : 20}, {'packs' : 10}, {'carton' : 4}, {'box' : 1}]))  # Output: 800
+
+print(get_unit([{ 'bars' : 6}, {'packs' : 12}, {'carton' : 1}]))  # Output: bars
+print(get_unit([{ 'pieces' : 20}, {'packs' : 10}, {'carton' : 4}, {'box' : 1}]))  # Output: pieces
+
 
 # This will only run from here, not when imported
 # # Use this for testing / debugging cases with the debugger
